@@ -1,10 +1,11 @@
+import { List, Item } from "./StatisticsList.styled"
 
-
-export const Statistics = ({ textContent }) => {
-    const array = Object.entries(textContent)
+export const Statistics = ({ good, neutral, bad, total, positivePercentage, countPercentage}) => {
+    const array = Object.entries({ good, neutral, bad, total, positivePercentage})
     return (
-        <ul>
-        {array.map(([key, value]) => <li key={key}>{key}: {value}</li>)}   
-        </ul>
+        <List>
+            {array.map(([key, value]) => <Item key={key}>{key}: {value}</Item>)}
+            {countPercentage(good, total)}
+        </List>
     )
 }
