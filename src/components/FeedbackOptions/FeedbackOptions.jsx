@@ -1,23 +1,18 @@
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { List, Button } from 'components/FeedbackOptions/List.styled';
 
-export const FeedbackOptions = ({ options, onLeaveFeedback, countTotalFeedback}) => {
+export const FeedbackOptions = ({ options, onLeaveFeedback}) => {
+    const names = Object.keys(options);
     return (
         <List>
-            {options.map(option => (
-                option !== 'total' && option !== 'positivePercentage' && <Button
-                    key={option}
-                    name={option}
-                    type="button"
-                    onClick={(e) => onLeaveFeedback(e.target.name)}
-                >{option}</Button>
-            ))}
-           
+            {names.map((name) => name !== 'total' && name !== 'positivePercentage' && <Button key={name} name={name} onClick={() => onLeaveFeedback(name)}>{name}</Button>
+                
+            )}
         </List>
     )
 }
 
 FeedbackOptions.propTypes = {
-    options: PropTypes.arrayOf(PropTypes.string)
+    options: PropTypes.objectOf(PropTypes.number.isRequired)
 }
