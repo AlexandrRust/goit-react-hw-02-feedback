@@ -8,12 +8,15 @@ export const List = styled.ul`
 `;
 
 export const Button = styled.button`
-    
-    padding: 5px;
+    padding: 5px 10px;
     border-radius: 5px;
     font-size: 18px;
     font-weight: 700;
+    background-color: #fff;
     ::first-letter {
         text-transform: uppercase;
+    }
+    :active {
+        background-color: blue;
     }
 `;

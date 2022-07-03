@@ -4,6 +4,7 @@ import { Box } from 'components/Box/Box.styled';
 import { FeedbackTitle } from 'components/Title/Title';
 import { FeedbackOptions } from 'components/FeedbackOptions/FeedbackOptions';
 import { FeedbackSection } from 'components/FeedbackSection/FeedbackSection.styled';
+import { Notification } from "components/Notification/Notification";
 import { Statistics } from "components/StatisticsList/StatisticsList";
 
 export class App extends Component  {
@@ -25,7 +26,6 @@ export class App extends Component  {
 
   countTotalFeedback = () => {
     this.setState({ total: this.state.total + 1 })
-    
   };
   
   countpositivePercentage = (name) => {
@@ -44,15 +44,20 @@ export class App extends Component  {
             onLeaveFeedback={this.onLeaveFeedback}
             />
         </FeedbackSection>
+
+        
+
         <FeedbackSection title={'Statistics'}>
           <FeedbackTitle>Statistics</FeedbackTitle>
+          {this.state.total < 1 ? <Notification message={'There is no feedback'}/> : 
           <Statistics
           good={this.state.good}
           neutral={this.state.neutral}
           bad={this.state.bad}
           total={this.state.total}
           positivePercentage={this.state.positivePercentage}
-          />
+          />}
+          
         </FeedbackSection>
       </Box>
     );
