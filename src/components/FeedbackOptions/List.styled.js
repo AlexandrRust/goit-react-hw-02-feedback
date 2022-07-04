@@ -4,6 +4,7 @@ export const List = styled.ul`
     display: flex;
     gap: 15px;
     margin: 0;
+    margin-bottom: 20px;
     padding: 0;
 `;
 
@@ -18,5 +19,7 @@ export const Button = styled.button`
     }
     :active {
         background-color: blue;
+        border-color: blue;
+        color: #fff;
     }
 `;
